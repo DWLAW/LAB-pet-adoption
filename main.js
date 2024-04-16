@@ -240,23 +240,67 @@ const pets = [
       imageUrl: "http://lsae2.iypcdn.com/static//modules/uploads/photos/language1/dino-live-22.jpg?119"
     }
   ];
+  const renderToDom = (divId, htmlToRender) => {
+    const selectedDiv = document.querySelector(divId);
+    selectedDiv.innerHTML = htmlToRender;
+  };
+  
+  
+   const cardsOnDom = (pets) => {
+    let domString = "";
+    for (const pet of pets) {
+      //card 
+        domString += `<div class="card" style="width: 18rem;">
+          <h5 class="card-title">${pet.name}</h5>
+          <img src=${pet.imageUrl} class="card-img-top" alt=${pet.name}>
+          <div class="card-body">
+            
+            <p class="card-text">${pet.color}</p>
+            <p class="card-text">${pet.specialSkill}</p>
+            <p class="card-text">${pet.type}</p>
+            <button type="button" class="btn btn-danger">Delete</button>
+          </div>
+        </div>`;
+        }
+    renderToDom('#app', domString);
+   };
+cardsOnDom(pets);
+// filter function
+const filter = (array, typeString) =>{
+  const petsArray = []
 
-  const targetingApp = document.querySelector("#app");
+  for (const pet of array){
+    if (pet.type === typeString){
+      petsArray.push(pet);
+    }
+  }
+  return petsArray
+}
+const showAllButton = document.querySelector("#showBtn");
+const showDogButton = document.querySelector("#dogBtn");
+const showCatButton = document.querySelector("#catBtn");
+const showDinoButton = document.querySelector("#dinoBtn");
 
-let domString = "";
-for (const pet of pets) {
-  //card
-  domString += `<div class="card" style="width: 18rem;">
-      <h5 class="card-title">${pet.name}</h5>
-      <img src=${pet.imageUrl} class="card-img-top" alt=${pet.name}>
-      <div class="card-body">
-        
-        <p class="card-text">${pet.color}</p>
-        <p class="card-text">${pet.specialSkill}</p>
-        <p class="card-text">${pet.type}</p>
-        <button type="button" class="btn btn-danger">Delete</button>
-      </div>
-    </div>`;
-};
 
-targetingApp.innerHTML = domString;
+
+
+showAllButton.addEventListener("click",()=>{
+  cardsOnDom(pets);
+  
+})
+
+
+showDogButton.addEventListener("click", () => {
+  const typeString = filter(pets , "dog");
+  cardsOnDom(typeString);
+})
+
+showCatButton.addEventListener("click", () => {
+  const typeString = filter(pets ,  "cat");
+  cardsOnDom(typeString);
+})
+
+showDinoButton.addEventListener("click", () => {
+  const typeString = filter(pets , "dino");
+  cardsOnDom(typeString);
+})
