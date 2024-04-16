@@ -254,6 +254,7 @@ for (const pet of pets) {
         <p class="card-text">${pet.color}</p>
         <p class="card-text">${pet.specialSkill}</p>
         <p class="card-text">${pet.type}</p>
+        <button type="button" class="btn btn-danger">Delete</button>
       </div>
     </div>`;
 };

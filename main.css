@@ -1,0 +1,22 @@
+body{
+  background-color: black;
+}
+#buttons{
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: space-around;
+}
+#app {
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: stretch;
+	align-content: center;
+}
+.card{
+  background-color: blanchedalmond;
+}
