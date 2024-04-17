@@ -257,12 +257,13 @@ const pets = [
             
             <p class="card-text">${pet.color}</p>
             <p class="card-text">${pet.specialSkill}</p>
-            <p class="card-text">${pet.type}</p>
-            <button type="button" class="btn btn-danger">Delete</button>
+            <p class="card-text" id="${pet.type}">${pet.type}</p>
+            <button type="button" class="btn btn-danger"id="${pet.id}">Delete</button>
           </div>
         </div>`;
         }
     renderToDom('#app', domString);
+    
    };
 cardsOnDom(pets);
 // filter function
@@ -275,32 +276,38 @@ const filter = (array, typeString) =>{
     }
   }
   return petsArray
+  
 }
+//filter buttons
 const showAllButton = document.querySelector("#showBtn");
 const showDogButton = document.querySelector("#dogBtn");
 const showCatButton = document.querySelector("#catBtn");
 const showDinoButton = document.querySelector("#dinoBtn");
-
-
-
-
+const formSubmitButton = document.querySelector("#form-submit");
 showAllButton.addEventListener("click",()=>{
   cardsOnDom(pets);
-  
+  e.preventDefault()
 })
-
 
 showDogButton.addEventListener("click", () => {
   const typeString = filter(pets , "dog");
   cardsOnDom(typeString);
+  e.preventDefault()
 })
 
 showCatButton.addEventListener("click", () => {
   const typeString = filter(pets ,  "cat");
   cardsOnDom(typeString);
+  e.preventDefault()
 })
 
 showDinoButton.addEventListener("click", () => {
   const typeString = filter(pets , "dino");
   cardsOnDom(typeString);
+  e.preventDefault()
 })
+formSubmitButton.addEventListener("click", () =>{
+  console.log("clicked");
+  e.preventDefault()
+})
+//form stuff
