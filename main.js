@@ -279,35 +279,37 @@ const filter = (array, typeString) =>{
   
 }
 //filter buttons
+
 const showAllButton = document.querySelector("#showBtn");
 const showDogButton = document.querySelector("#dogBtn");
 const showCatButton = document.querySelector("#catBtn");
 const showDinoButton = document.querySelector("#dinoBtn");
 const formSubmitButton = document.querySelector("#form-submit");
-showAllButton.addEventListener("click",()=>{
-  cardsOnDom(pets);
+showAllButton.addEventListener("click",(e)=>{
   e.preventDefault()
+  cardsOnDom(pets);
+  
 })
 
-showDogButton.addEventListener("click", () => {
+showDogButton.addEventListener("click", (e) => {
+  e.preventDefault()
   const typeString = filter(pets , "dog");
   cardsOnDom(typeString);
-  e.preventDefault()
 })
 
-showCatButton.addEventListener("click", () => {
+showCatButton.addEventListener("click", (e) => {
+  e.preventDefault()
   const typeString = filter(pets ,  "cat");
   cardsOnDom(typeString);
-  e.preventDefault()
 })
 
-showDinoButton.addEventListener("click", () => {
+showDinoButton.addEventListener("click", (e) => {
+  e.preventDefault()
   const typeString = filter(pets , "dino");
   cardsOnDom(typeString);
-  e.preventDefault()
 })
-formSubmitButton.addEventListener("click", () =>{
-  console.log("clicked");
+formSubmitButton.addEventListener("click", (e) =>{
   e.preventDefault()
+  console.log("clicked");
 })
 //form stuff
