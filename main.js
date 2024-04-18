@@ -285,6 +285,8 @@ const showDogButton = document.querySelector("#dogBtn");
 const showCatButton = document.querySelector("#catBtn");
 const showDinoButton = document.querySelector("#dinoBtn");
 const formSubmitButton = document.querySelector("#form-submit");
+
+
 showAllButton.addEventListener("click",(e)=>{
   e.preventDefault()
   cardsOnDom(pets);
@@ -311,6 +313,8 @@ showDinoButton.addEventListener("click", (e) => {
 formSubmitButton.addEventListener("click", (e) =>{
   e.preventDefault()
   console.log("clicked");
+
+  // submit button function
   function addPet() {
     
     
@@ -340,5 +344,5 @@ formSubmitButton.addEventListener("click", (e) =>{
 
   }
   addPet();
+  cardsOnDom(pets);
 })
-//form stuff
