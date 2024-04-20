@@ -333,6 +333,7 @@ formSubmitButton.addEventListener("click", (e) =>{
 })
 //DELETE FUNCTION
 
+
 const  app = document.querySelector("#app");
 app.addEventListener('click', (e)=>{
   if(e.target.id.includes("delete")){
@@ -342,3 +343,4 @@ app.addEventListener('click', (e)=>{
     cardsOnDom(pets);
   }
 });
+
