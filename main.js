@@ -325,6 +325,7 @@ showDinoButton.addEventListener("click", (e) => {
 formSubmitButton.addEventListener("click", (e) =>{
   e.preventDefault();
   // submit button function
+  const form = document.querySelector("form")
   function addPet() {
     
     let newPet ={
@@ -337,9 +338,11 @@ formSubmitButton.addEventListener("click", (e) =>{
     }
     pets.push(newPet);
     console.log("pets", pets)
+    form.reset()
   }
   addPet();
   cardsOnDom(pets);
+  ;
 })
 //DELETE FUNCTION
 const  app = document.querySelector("#app");
