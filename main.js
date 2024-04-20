@@ -258,7 +258,7 @@ const pets = [
             <p class="card-text">${pet.color}</p>
             <p class="card-text">${pet.specialSkill}</p>
             <p class="card-text" id="${pet.type}">${pet.type}</p>
-            <button type="button" class="btn btn-danger"id="${pet.id}">Delete</button>
+            <button type="button" class="btn btn-danger"id:"delete--${pet.id}">Delete</button>
           </div>
         </div>`;
         }
@@ -278,7 +278,7 @@ const filter = (array, typeString) =>{
   return petsArray
   
 }
-//filter buttons
+//buttons
 
 const showAllButton = document.querySelector("#showBtn");
 const showDogButton = document.querySelector("#dogBtn");
@@ -286,11 +286,18 @@ const showCatButton = document.querySelector("#catBtn");
 const showDinoButton = document.querySelector("#dinoBtn");
 const formSubmitButton = document.querySelector("#form-submit");
 
+// const animalsToFilter = [
+//   {elementRef: showCatButton, string: 'cat'},
+//   {elementRef: showDogButton, string: 'dog'},
+//   {elementRef: showDinoButton, string: 'dino'},
+//   {elementRef: showAllButton, string: ''},
+// ]
 
+  
 showAllButton.addEventListener("click",(e)=>{
   e.preventDefault()
   cardsOnDom(pets);
-  
+
 })
 
 showDogButton.addEventListener("click", (e) => {
@@ -310,13 +317,14 @@ showDinoButton.addEventListener("click", (e) => {
   const typeString = filter(pets , "dino");
   cardsOnDom(typeString);
 })
-formSubmitButton.addEventListener("click", (e) =>{
-  e.preventDefault()
-  console.log("clicked");
 
+
+//subimit button and function
+
+formSubmitButton.addEventListener("click", (e) =>{
+  e.preventDefault();
   // submit button function
   function addPet() {
-    
     
     const inputOne = document.getElementById("name");
     const inputTwo = document.getElementById("image");
@@ -335,14 +343,16 @@ formSubmitButton.addEventListener("click", (e) =>{
       color: value3,
       specialSkill: value4,
       type :value5
-
     }
-
     pets.push(newPet);
     console.log("pets", pets)
-    
-
   }
   addPet();
   cardsOnDom(pets);
+})
+//DELETE FUNCTION
+document.querySelector("#app").addEventListener("click", ()=>{
+console.log("delete");
+pets.splice("${pet.id}", 1);
+cardsOnDom(pets);
 })
