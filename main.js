@@ -342,8 +342,12 @@ formSubmitButton.addEventListener("click", (e) =>{
   cardsOnDom(pets);
 })
 //DELETE FUNCTION
-document.querySelector("#app").addEventListener("click", ()=>{
-console.log("delete");
-pets.splice("${pet.id}",1);
-cardsOnDom(pets);
-})
+const  app = document.querySelector("#app");
+app.addEventListener('click', (e)=>{
+  if(e.target.id.includes("delete")){
+    const [, id] = e.target.id.split("--");
+    const index = pets.findIndex((pet) => pet.id === Number(id));
+    pets.splice(index, 1);
+    cardsOnDom(pets);
+  }
+});
