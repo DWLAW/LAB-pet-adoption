@@ -293,6 +293,7 @@ const formSubmitButton = document.querySelector("#form-submit");
 //   {elementRef: showAllButton, string: ''},
 // ]
 
+    
   
 showAllButton.addEventListener("click",(e)=>{
   e.preventDefault()
@@ -343,6 +344,6 @@ formSubmitButton.addEventListener("click", (e) =>{
 //DELETE FUNCTION
 document.querySelector("#app").addEventListener("click", ()=>{
 console.log("delete");
-pets.splice("${pet.id}", 1);
+pets.splice("${pet.id}",1);
 cardsOnDom(pets);
 })
