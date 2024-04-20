@@ -326,23 +326,13 @@ formSubmitButton.addEventListener("click", (e) =>{
   // submit button function
   function addPet() {
     
-    const inputOne = document.getElementById("name");
-    const inputTwo = document.getElementById("image");
-    const inputThree = document.getElementById("petColor");
-    const inputFour = document.getElementById("specialSkill");
-    const inputFive = document.getElementById("type");
-
-    const value1 = inputOne.value;
-    const value2 = inputTwo.value;
-    const value3 = inputThree.value;
-    const value4 = inputFour.value;
-    const value5 = inputFive.value;
     let newPet ={
-      name: value1,
-      imageUrl: value2,
-      color: value3,
-      specialSkill: value4,
-      type :value5
+      id: pets.length+1,
+      name:  document.getElementById("name").value,
+      imageUrl: document.getElementById("image").value,
+      color: inputThree = document.getElementById("petColor").value,
+      specialSkill: document.getElementById("specialSkill").value,
+      type :document.getElementById("type").value ,
     }
     pets.push(newPet);
     console.log("pets", pets)
