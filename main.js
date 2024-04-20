@@ -258,7 +258,7 @@ const pets = [
             <p class="card-text">${pet.color}</p>
             <p class="card-text">${pet.specialSkill}</p>
             <p class="card-text" id="${pet.type}">${pet.type}</p>
-            <button type="button" class="btn btn-danger"id:"delete--${pet.id}">Delete</button>
+            <button type="button" class="btn btn-danger"id="delete--${pet.id}">Delete</button>
           </div>
         </div>`;
         }
@@ -278,20 +278,12 @@ const filter = (array, typeString) =>{
   return petsArray
   
 }
-//buttons
 
 const showAllButton = document.querySelector("#showBtn");
 const showDogButton = document.querySelector("#dogBtn");
 const showCatButton = document.querySelector("#catBtn");
 const showDinoButton = document.querySelector("#dinoBtn");
 const formSubmitButton = document.querySelector("#form-submit");
-
-// const animalsToFilter = [
-//   {elementRef: showCatButton, string: 'cat'},
-//   {elementRef: showDogButton, string: 'dog'},
-//   {elementRef: showDinoButton, string: 'dino'},
-//   {elementRef: showAllButton, string: ''},
-// ]
 
   
 showAllButton.addEventListener("click",(e)=>{
@@ -320,10 +312,9 @@ showDinoButton.addEventListener("click", (e) => {
 
 
 //subimit button and function
-
+const form = document.querySelector('form')
 formSubmitButton.addEventListener("click", (e) =>{
   e.preventDefault();
-  // submit button function
   function addPet() {
     
     let newPet ={
@@ -335,14 +326,19 @@ formSubmitButton.addEventListener("click", (e) =>{
       type :document.getElementById("type").value ,
     }
     pets.push(newPet);
-    console.log("pets", pets)
   }
   addPet();
   cardsOnDom(pets);
+  form.reset()
 })
 //DELETE FUNCTION
-document.querySelector("#app").addEventListener("click", ()=>{
-console.log("delete");
-pets.splice("${pet.id}", 1);
-cardsOnDom(pets);
-})
+
+const  app = document.querySelector("#app");
+app.addEventListener('click', (e)=>{
+  if(e.target.id.includes("delete")){
+    const [, id] = e.target.id.split("--");
+    const index = pets.findIndex((pet) => pet.id === Number(id));
+    pets.splice(index, 1);
+    cardsOnDom(pets);
+  }
+});

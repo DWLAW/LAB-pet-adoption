@@ -35,10 +35,10 @@ h5{
 	display: flex;
 	flex-direction: column;
 	background-color: cadetblue;
-	justify-content: center;
+	
 	align-items: center;
 	align-self: center;
-	text-align: center;
+	
 	
 }
 #dog {
