@@ -284,40 +284,39 @@ const showAllButton = document.querySelector("#showBtn");
 const showDogButton = document.querySelector("#dogBtn");
 const showCatButton = document.querySelector("#catBtn");
 const showDinoButton = document.querySelector("#dinoBtn");
+
 const formSubmitButton = document.querySelector("#form-submit");
 
-// const animalsToFilter = [
-//   {elementRef: showCatButton, string: 'cat'},
-//   {elementRef: showDogButton, string: 'dog'},
-//   {elementRef: showDinoButton, string: 'dino'},
-//   {elementRef: showAllButton, string: ''},
-// ]
-
-    
+const eventBtns = (e) => {
+  e.preventDefault();
+ 
+  let typeString = []
+  //TODO change to switch case
+  if(e.target.id.includes("dogBtn")){ typeString = filter(pets , "dog");}
+  if(e.target.id.includes("catBtn")){ typeString = filter(pets , "cat");}
+  if(e.target.id.includes("dinoBtn")){ typeString = filter(pets , "dino");}
+  if(e.target.id.includes("showBtn")){  typeString = pets }
   
+    cardsOnDom(typeString);
+  }
+
 showAllButton.addEventListener("click",(e)=>{
-  e.preventDefault()
-  cardsOnDom(pets);
+  eventBtns(e)
 
 })
 
 showDogButton.addEventListener("click", (e) => {
-  e.preventDefault()
-  const typeString = filter(pets , "dog");
-  cardsOnDom(typeString);
+ eventBtns(e)
 })
 
 showCatButton.addEventListener("click", (e) => {
-  e.preventDefault()
-  const typeString = filter(pets ,  "cat");
-  cardsOnDom(typeString);
+  eventBtns(e)
 })
 
 showDinoButton.addEventListener("click", (e) => {
-  e.preventDefault()
-  const typeString = filter(pets , "dino");
-  cardsOnDom(typeString);
+  eventBtns(e)
 })
+
 
 
 //subimit button and function
@@ -337,7 +336,6 @@ formSubmitButton.addEventListener("click", (e) =>{
       type :document.getElementById("type").value ,
     }
     pets.push(newPet);
-    console.log("pets", pets)
     form.reset()
   }
   addPet();
