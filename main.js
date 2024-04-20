@@ -258,7 +258,7 @@ const pets = [
             <p class="card-text">${pet.color}</p>
             <p class="card-text">${pet.specialSkill}</p>
             <p class="card-text" id="${pet.type}">${pet.type}</p>
-            <button type="button" class="btn btn-danger"id:"delete--${pet.id}">Delete</button>
+            <button type="button" class="btn btn-danger"id="delete--${pet.id}">Delete</button>
           </div>
         </div>`;
         }
