@@ -279,12 +279,7 @@ const filter = (array, typeString) =>{
   
 }
 //buttons
-
-const showAllButton = document.querySelector("#showBtn");
-const showDogButton = document.querySelector("#dogBtn");
-const showCatButton = document.querySelector("#catBtn");
-const showDinoButton = document.querySelector("#dinoBtn");
-
+const filterButtons = document.querySelector("#buttons");
 const formSubmitButton = document.querySelector("#form-submit");
 
 const eventBtns = (e) => {
@@ -299,23 +294,9 @@ const eventBtns = (e) => {
   
     cardsOnDom(typeString);
   }
-
-showAllButton.addEventListener("click",(e)=>{
-  eventBtns(e)
-
-})
-
-showDogButton.addEventListener("click", (e) => {
- eventBtns(e)
-})
-
-showCatButton.addEventListener("click", (e) => {
-  eventBtns(e)
-})
-
-showDinoButton.addEventListener("click", (e) => {
-  eventBtns(e)
-})
+  filterButtons.addEventListener("click", (e) => {
+      eventBtns(e)
+     })
 
 
 
