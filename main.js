@@ -240,12 +240,14 @@ const pets = [
       imageUrl: "http://1.bp.blogspot.com/-VjM0CmtN-vU/T7YX-LXa09I/AAAAAAAADA0/Vt1oGWEG0lw/s1600/sheepdog+border+collie+shakes+off+water+funny+picture+photo+pulling+faces+raspberry+tongue.jpg"
     }
   ];
+
+  //Dom iteration utility function
   const renderToDom = (divId, htmlToRender) => {
     const selectedDiv = document.querySelector(divId);
     selectedDiv.innerHTML = htmlToRender;
   };
   
-  
+  // Iterates the array to cards to the div  #app
    const cardsOnDom = (pets) => {
     let domString = "";
     for (const pet of pets) {
@@ -278,22 +280,37 @@ const filter = (array, typeString) =>{
   return petsArray
   
 }
-//buttons
+buttons
+// query selector for targeting filter buttons 
 const filterButtons = document.querySelector("#buttons");
+// targeting submit button
 const formSubmitButton = document.querySelector("#form-submit");
-
+// function for eventListener
 const eventBtns = (e) => {
   e.preventDefault();
- 
+//  switch case for the filter buttons
   let typeString = []
+ switch (e.target.id){
+  case 'dogBtn': typeString = filter(pets , "dog"); 
+  break;
+  case 'catBtn':  typeString = filter(pets , "cat");
+  break;
+  case 'dinoBtn':typeString = filter(pets , "dino");
+  break;
+  case 'showBtn' :  typeString = pets;
+  break;
+  default: typeString = pets;
+ }
+
   //TODO change to switch case
-  if(e.target.id.includes("dogBtn")){ typeString = filter(pets , "dog");}
-  if(e.target.id.includes("catBtn")){ typeString = filter(pets , "cat");}
-  if(e.target.id.includes("dinoBtn")){ typeString = filter(pets , "dino");}
-  if(e.target.id.includes("showBtn")){  typeString = pets }
+  // if(e.target.id.includes("dogBtn")){ typeString = filter(pets , "dog");}
+  // if(e.target.id.includes("catBtn")){ typeString = filter(pets , "cat");}
+  // if(e.target.id.includes("dinoBtn")){ typeString = filter(pets , "dino");}
+  // if(e.target.id.includes("showBtn")){  typeString = pets }
   
     cardsOnDom(typeString);
   }
+  // event listener for buttons
   filterButtons.addEventListener("click", (e) => {
       eventBtns(e)
      })
@@ -305,6 +322,7 @@ const eventBtns = (e) => {
 formSubmitButton.addEventListener("click", (e) =>{
   e.preventDefault();
   // submit button function
+  // creates a new object to be pushed into the array based on the forms in the html
   const form = document.querySelector("form")
   function addPet() {
     
@@ -324,12 +342,18 @@ formSubmitButton.addEventListener("click", (e) =>{
   ;
 })
 //DELETE FUNCTION
+// event bubbling targeting the iteration done on line 251
 const  app = document.querySelector("#app");
 app.addEventListener('click', (e)=>{
+  // targets the id delete
   if(e.target.id.includes("delete")){
+    // targets specifically the id in the array and then splits the delete-- to taget pet.id
     const [, id] = e.target.id.split("--");
+    // creates variable to store the id of an object in the array
     const index = pets.findIndex((pet) => pet.id === Number(id));
+    // removes the item from the array based on the id 
     pets.splice(index, 1);
+    // reiterates the cardsOnDom with the new array without the one that was jsut deleted
     cardsOnDom(pets);
   }
 });
