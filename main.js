@@ -299,7 +299,8 @@ const eventBtns = (e) => {
   break;
   case 'showBtn' :  typeString = pets;
   break;
-  default: typeString = pets;
+  default: return typeString
+  ;
  }
 
   //TODO change to switch case
@@ -311,7 +312,7 @@ const eventBtns = (e) => {
     cardsOnDom(typeString);
   }
   // event listener for buttons
-  filterButtons.addEventListener("click", (e) => {
+  filterButtons.addEventListener("click", (e) => { 
       eventBtns(e)
      })
 

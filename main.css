@@ -47,6 +47,8 @@ box-shadow: 22px 22px 24px #b5abc5, -22px -22px 24px #f5e7ff;
 	align-self: center;
 	padding-top: 50px;
 	padding-bottom: 15px;
+	size: auto;
+	background-blend-mode: 50%;
 	
 	
 }
